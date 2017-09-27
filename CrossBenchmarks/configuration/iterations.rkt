@@ -27,13 +27,13 @@
 (define wc-iters            8)
 
 ; C benchmarks
-(define fft-iters       17500)
-(define fib-iters          10)
+(define fft-iters       35000)
+(define fib-iters          12)
 (define fibfp-iters        20)
-(define mbrot-iters      1000)
+(define mbrot-iters      1400)
 (define nucleic-iters     150)
 (define pnpoly-iters  2000000)
-(define sum-iters       50000)
+(define sum-iters       65000)
 (define sumfp-iters    250000)
 ; (define tfib-iters         20) threads
 
@@ -47,7 +47,7 @@
 (define matrix-iters      800)
 (define maze-iters      10000)
 (define mazefun-iters    3000)
-(define nqueens-iters    2250)
+(define nqueens-iters    2500)
 (define paraffins-iters  2000)
 (define peval-iters       300)
 (define pi-iters           40)
