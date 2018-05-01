@@ -1,0 +1,18 @@
+#! /bin/bash
+PROGRAM=`echo $0 | sed 's%.*/%%'`
+PROGDIR="$(cd `dirname $0`; echo $PWD)"
+BENCHDIR="$(dirname $PROGDIR)"
+RUN_CROSS="${RUN_CROSS:-$BENCHDIR/../operations-on-cek/examples/lc/benchmarks/run-cross.rkt}"
+
+if [ $# -lt 2 ]; then
+    echo "No."
+    exit -1
+fi
+
+VARIABLE=$1
+shift
+BENCHMARK=$1
+shift
+
+(cd $BENCHDIR/CrossBenchmarks; PYCKET_BIN=echo $PROGDIR/run-pycket $VARIABLE $BENCHMARK)
+racket $RUN_CROSS --bench $BENCHMARK --pycket-bench
