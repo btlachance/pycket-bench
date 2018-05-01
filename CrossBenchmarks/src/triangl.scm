@@ -1,25 +1,36 @@
 ;;; TRIANGL -- Board game benchmark.
- 
+
+(define (list->vector xs)
+  (apply vector xs))
+(define (vector->list v)
+  (let loop ([i (- (vector-length v) 1)]
+             [xs '()])
+    (if (< i 0)
+        xs
+        (loop (- i 1)
+              (cons (vector-ref v i) xs)))))
+  
+
 (define *board*
-  (list->vector '(1 1 1 1 1 0 1 1 1 1 1 1 1 1 1 1)))
+  (list->vector (list 1 1 1 1 1 0 1 1 1 1 1 1 1 1 1 1)))
 
 (define *sequence*
-  (list->vector '(0 0 0 0 0 0 0 0 0 0 0 0 0 0)))
+  (list->vector (list 0 0 0 0 0 0 0 0 0 0 0 0 0 0)))
 
 (define *a*
-  (list->vector '(1 2 4 3 5 6 1 3 6 2 5 4 11 12
+  (list->vector (list 1 2 4 3 5 6 1 3 6 2 5 4 11 12
                   13 7 8 4 4 7 11 8 12 13 6 10
                   15 9 14 13 13 14 15 9 10
                   6 6)))
 
 (define *b*
-  (list->vector '(2 4 7 5 8 9 3 6 10 5 9 8
+  (list->vector (list 2 4 7 5 8 9 3 6 10 5 9 8
                   12 13 14 8 9 5 2 4 7 5 8
                   9 3 6 10 5 9 8 12 13 14
                   8 9 5 5)))
 
 (define *c*
-  (list->vector '(4 7 11 8 12 13 6 10 15 9 14 13
+  (list->vector (list 4 7 11 8 12 13 6 10 15 9 14 13
                   13 14 15 9 10 6 1 2 4 3 5 6 1
                   3 6 2 5 4 11 12 13 7 8 4 4)))
 
@@ -54,7 +65,7 @@
   (run-benchmark
     "triangl"
     triangl-iters
-    (lambda (result) (equal? result '(22 34 31 15 7 1 20 17 25 6 5 13 32)))
+    (lambda (result) (equal? result (list 22 34 31 15 7 1 20 17 25 6 5 13 32)))
     (lambda (i depth) (lambda () (test i depth)))
     22
     1))

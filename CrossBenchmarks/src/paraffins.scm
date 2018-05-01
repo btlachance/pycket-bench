@@ -1,8 +1,11 @@
 ;;; PARAFFINS -- Compute how many paraffins exist with N carbon atoms.
 
+(define (even? n) (= 0 (/ n 2)))
+(define (odd? n) (not (even? n)))
+
 (define (gen n)
   (let* ((n/2 (quotient n 2))
-         (radicals (make-vector (+ n/2 1) '(H))))
+         (radicals (make-vector (+ n/2 1) (list 'H))))
 
     (define (rads-of-size n)
       (let loop1 ((ps

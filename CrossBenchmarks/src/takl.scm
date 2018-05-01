@@ -26,7 +26,8 @@
   (run-benchmark
     "takl"
     takl-iters
-    (lambda (result) (equal? result '(7 6 5 4 3 2 1)))
+    (lambda (result) (equal? result
+                             (list 7 6 5 4 3 2 1)))
     (lambda (x y z) (lambda () (mas x y z)))
     l18
     l12

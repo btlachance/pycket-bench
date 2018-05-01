@@ -21,9 +21,9 @@
 
 (define (run)
   (let ((count 0)
-        (xp (FLOATvector-const 0. 1. 1. 0. 0. 1. -.5 -1. -1. -2. -2.5
+        (xp (vector 0. 1. 1. 0. 0. 1. -.5 -1. -1. -2. -2.5
                                -2. -1.5 -.5 1. 1. 0. -.5 -1. -.5))
-        (yp (FLOATvector-const 0. 0. 1. 1. 2. 3. 2. 3. 0. -.5 -1.
+        (yp (vector 0. 0. 1. 1. 2. 3. 2. 3. 0. -.5 -1.
                                -1.5 -2. -2. -1.5 -1. -.5 -1. -1. -.5)))
     (if (pt-in-poly2 xp yp .5 .5) (set! count (+ count 1)))
     (if (pt-in-poly2 xp yp .5 1.5) (set! count (+ count 1)))
@@ -44,5 +44,6 @@
     "pnpoly"
     pnpoly-iters
     (lambda (result)
+      (define (number? x) #t)
       (and (number? result) (= result 6)))
     (lambda () (lambda () (run)))))

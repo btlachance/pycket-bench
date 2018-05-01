@@ -100,7 +100,8 @@
           1
           (* n (factorial (- n 1)))))
     (run-benchmark
-      (string-append "perm" (number->string n))
+      "permN"
+      #;(string-append "perm" (number->string n))
       perm9-iters
       (lambda (result)
         (= (sumlists result)
